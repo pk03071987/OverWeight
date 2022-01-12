@@ -1,0 +1,37 @@
+Hi, 
+
+I hope, my package will help you,
+
+This is a template for, creation "Wingsuit flying" game
+In this template, you can use standard "poses for a flight" and create new poses,
+Template have a "Pose translation system" and flying controller associated with this system 
+
+In this template there is a landscape and targeted systems for testing flying and
+maneuvers
+
+For the test, at first open the scene "Assets/Scenes/PoseAnimation" and click play :) ,
+
+In this scene you can find a GameObject "WingsuitAviator”, and his component “JointsPoseController”
+
+1) Uncheck the checkbox "Lock joints" and set joints, who will participate in the creation of new poses,
+Do not "set up all childs" if you don't want control some joint in Aviator
+2) Check the checkbox "Lock joints”, Uncheck the checkbox "Update pose" , Write New pose name,  for creating new poses, save pose or remove pose
+3) Check the checkbox "Lock joints" , Check the checkbox "Update pose" and test translation from "current pose" to "new pose" 
+
+4) To simulate the random motion of the feet and hands or other joints of the pilot in flight is used the component “AviatorController”, the button "Set default rotations to controller" need for reset "joints fluctuation" amplitude.
+After you can set min and max value for "joints fluctuation" and frequency in the component “AviatorController” (see the array “Joints ” of the component “AviatorController” )
+Also the component “AviatorController” uses the joints "hipSuit" and "armSuits" for imitation suit random vibrations in flying.
+The component "AviatorGUI" show how to use the pose translation system.
+The component “HitChecker” need for aviator “Ragdoll” enable, for imitation aviator dropping or for open parachute.
+
+Also you can see video tutorial in this link  
+
+https://www.youtube.com/watch?v=RtUGLRnJ8dg&feature=youtu.be
+
+
+
+Package is  include Standard Assets / Environment and Scripts
+
+Good luck!
+
+
