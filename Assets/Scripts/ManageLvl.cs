@@ -75,8 +75,8 @@ public class ManageLvl : MonoBehaviour
         //inst obstacles
         for (int i = 0; i < number_of_obstacles; i++)
         {
-         //   GameObject gm = Instantiate(obstacle_obj, obstacles_pos_list[i].transform.position, obstacle_obj.transform.rotation);
-            GameObject gm = Instantiate(obstacle_obj, new Vector3(0, player.transform.position.y-((i+1)*5),12), obstacle_obj.transform.rotation);
+            GameObject gm = Instantiate(obstacle_obj, obstacles_pos_list[i].transform.position, obstacle_obj.transform.rotation);
+            //GameObject gm = Instantiate(obstacle_obj, new Vector3(0, player.transform.position.y-((i+1)*5),12), obstacle_obj.transform.rotation);
             int t = Random.Range(1, obstacles_text_numebers);
             //gm.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = t.ToString();
             float scaleTocut = (obstacles_text_numebers - t) * ((gm.transform.GetChild(0).localScale.x / 2) / obstacles_text_numebers);

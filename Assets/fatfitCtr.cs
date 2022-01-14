@@ -52,10 +52,6 @@ public class fatfitCtr : MonoBehaviour
         {
             return;
         }
-        
-
-
-
         if (collision.gameObject.tag == "fat")
         {
             Destroy(collision.gameObject);
@@ -133,25 +129,23 @@ public class fatfitCtr : MonoBehaviour
         if (playerScore == gamemanager.instance.sizegoal)
         {
             gamemanager.instance.wineffect.SetActive(true);
-            gamemanager.instance.win.SetActive(true);
             yield return new WaitForSeconds(1.5f);
             if(!foroncetime)
             {
                 foroncetime = true;
                 //Advertisements.Instance.ShowInterstitial();
-                gamemanager.instance.winpanel.SetActive(true);
+                UiManager.instance.winpanel.SetActive(true);
             }
             
         }
         else
         {
-            gamemanager.instance.lose.SetActive(true);
             yield return new WaitForSeconds(1.5f);
             if (!foroncetime)
             {
                 foroncetime = true;
                 //Advertisements.Instance.ShowInterstitial();
-                gamemanager.instance.losepanel.SetActive(true);
+                UiManager.instance.losepanel.SetActive(true);
             }
             
         }

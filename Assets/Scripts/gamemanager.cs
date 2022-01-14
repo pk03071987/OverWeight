@@ -9,17 +9,11 @@ public class gamemanager : MonoBehaviour
 {
     public static gamemanager instance;
 
-    public GameObject startpanel, winpanel, losepanel,messagepanel,win,lose,hud;
-
-    public GameObject effect1, effect2,enemydieEffect,obstacleEffect,wineffect;
-
+    public GameObject effect1, effect2, enemydieEffect, obstacleEffect, wineffect;
     public Text playerCounterGameplay, plauerCounterWin, newbestTxt, goalsizetxt;
 
     public GameObject[] LevelsContenu;
     public GameObject[] PlayersList;
-
-    public Text playerNum, enemyNum;
-    public GameObject enemVsPlayer;
 
     public int sizegoal;
 
@@ -85,7 +79,10 @@ public class gamemanager : MonoBehaviour
             PlayerPrefs.SetInt("firsttime", 0);
             PlayerPrefs.SetInt("pourcentage", 0);
             PlayerPrefs.SetInt("activSkin", 0);
+            PlayerPrefs.SetInt("character0", 1);
             PlayerPrefs.SetInt("skin0", 1);
+            string st = System.DateTime.Now.Ticks.ToString();
+            PlayerPrefs.SetString("Timer", st);
             for (int i = 1; i < 9; i++)
             {
                 PlayerPrefs.SetInt("skin" + i, 0);
@@ -155,8 +152,10 @@ public class gamemanager : MonoBehaviour
     {
         return PlayerPrefs.GetInt("skin" + numSkin);
     }
-
-
+    public int Getchracter()
+    {
+        return PlayerPrefs.GetInt("character");
+    }
     // active skin
 
     public void setactivSkin(int activSkin)
@@ -190,6 +189,13 @@ public class gamemanager : MonoBehaviour
         PlayerPrefs.SetInt("level", 0);
         PlayerPrefs.SetInt("skin0", 1);
         PlayerPrefs.SetInt("activSkin", 0);
+        PlayerPrefs.SetInt("character0", 1);
+        PlayerPrefs.SetInt("character1", 0);
+        PlayerPrefs.SetInt("character2", 0);
+        PlayerPrefs.SetInt("character3", 0);
+        PlayerPrefs.SetInt("character4", 0);
+        PlayerPrefs.SetInt("character", 0);
+        PlayerPrefs.SetString("Timer", string.Empty);
         for (int i = 1; i < 9; i++)
         {
             PlayerPrefs.SetInt("skin" + i, 0);
@@ -197,16 +203,6 @@ public class gamemanager : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    //public void activetedSkin()
-    //{
-    //    Destroy(player);
-    //    GameObject go = Instantiate(PlayersList[getactivSkin()], Origin_player_Position, Quaternion.identity) as GameObject;
-    //    go.transform.localScale = origin_player_Scale;
-    //    if (helmetln != null)
-    //        helmetln.transform.SetParent(go.transform);
-
-    //}
 
     public void instantiateLevel()
     {
@@ -216,5 +212,5 @@ public class gamemanager : MonoBehaviour
         print(LevelsContenu.Length);
         print(getLevel());
     }
-
+   
 }

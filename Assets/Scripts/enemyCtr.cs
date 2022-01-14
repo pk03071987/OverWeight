@@ -58,6 +58,6 @@ public class enemyCtr : MonoBehaviour
         gamemanager.instance.effect1.SetActive(true);
         gamemanager.instance.effect2.SetActive(true);
         yield return new WaitForSeconds(1.5f);
-        gamemanager.instance.winpanel.SetActive(true);
+        UiManager.instance.winpanel.SetActive(true);
     }
 }

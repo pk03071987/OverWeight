@@ -21,8 +21,8 @@ public class playersController : MonoBehaviour
     public float tryspeed;
     bool countAnim;
     public LayerMask layers;
-
     // Start is called before the first frame update
+   
     void Start()
     {
         currentspeed = new Vector3(tryspeed, 0, 0);
@@ -31,6 +31,20 @@ public class playersController : MonoBehaviour
         levellong = endlvl.transform.position.z - startZ;
         Debug.Log(levellong);
         enemCtr = GameObject.FindObjectOfType<enemyCtr>();
+        int id = gamemanager.instance.Getchracter();
+        for (int i = 0; i < UiManager.instance.character.Length; i++)
+        {
+            if (i == id)
+            {
+               UiManager.instance.character[i].SetActive(true);
+               UiManager.instance.selection[i].SetActive(true);
+            }
+            else
+            {
+                UiManager.instance.character[i].SetActive(false);
+                UiManager.instance.selection[i].SetActive(false);
+            }
+        }
     }
     public void OnPlayGame()
     {
@@ -39,9 +53,10 @@ public class playersController : MonoBehaviour
         StartCoroutine(alertTogoal());
         transform.GetChild(0).GetComponent<Animator>().SetTrigger("run");
         transform.GetChild(1).GetComponent<Animator>().SetTrigger("walk");
-        gamemanager.instance.startpanel.SetActive(false);
-        gamemanager.instance.hud.SetActive(true);
-        UiManager.instance.currentLevelText.text = "LEVEL " + gamemanager.instance.getLevel();
+        UiManager.instance.startpanel.SetActive(false);
+        UiManager.instance.playerSelectionPanel.SetActive(false);
+        UiManager.instance.hud.SetActive(true);
+        UiManager.instance.currentLevelText.text = "LEVEL " + (gamemanager.instance.getLevel()+1);
     }
     float timer;
     // Update is called once per frame
@@ -51,7 +66,7 @@ public class playersController : MonoBehaviour
             return;
 
         lvlbar.fillAmount = (transform.position.z - startZ) / levellong;
-        
+
         if (transform.position.z - endlvl.transform.position.z > 3f)
         {
             winlevel = true;
@@ -68,8 +83,13 @@ public class playersController : MonoBehaviour
         }
         if (gamerun && !winlevel && transform.childCount > 0)
         {
+<<<<<<< Updated upstream
             timer += Time.deltaTime;
             transform.position = new Vector3(transform.position.x, transform.position.y - downwardSpeed * Time.deltaTime, transform.position.z+(forwardSpeed*Time.deltaTime));
+=======
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speedForward * Time.deltaTime);
+            //  transform.position = new Vector3(transform.position.x, transform.position.y - speedForward * Time.deltaTime, transform.position.z);
+>>>>>>> Stashed changes
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -158,14 +178,14 @@ public class playersController : MonoBehaviour
     IEnumerator losegame()
     {
         yield return new WaitForSeconds(1f);
-        gamemanager.instance.losepanel.SetActive(true);
+        UiManager.instance.losepanel.SetActive(true);
     }
 
     IEnumerator alertTogoal()
     {
-        gamemanager.instance.messagepanel.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        gamemanager.instance.messagepanel.SetActive(false);
+        UiManager.instance.messagepanel.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        UiManager.instance.messagepanel.SetActive(false);
 
     }
 }
