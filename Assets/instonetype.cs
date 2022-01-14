@@ -12,9 +12,5 @@ public class instonetype : MonoBehaviour
         transform.GetChild(Random.Range(0,i)).gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
